@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rune Yes/No Minimal</title>
+    <style>
+        body { background: #f5f6fa; font-family: sans-serif; margin: 0; }
+        .minimal-rune {
+            max-width: 400px;
+            margin: 3rem auto;
+            padding: 2rem 1.5rem;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #0001;
+        }
+        label { display: block; margin-bottom: 0.5rem; color: #222; font-weight: 500; }
+        input[type=text] {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 0.7rem;
+            border: none;
+            background: #222;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+        .rune-result { margin-top: 2rem; text-align: center; }
+        .rune-symbol { font-size: 3rem; margin-bottom: 0.5rem; }
+        .rune-name { font-weight: bold; font-size: 1.1em; margin-bottom: 0.2em; }
+        .rune-orientation { color: #888; font-size: 0.95em; margin-bottom: 0.5em; }
+        .rune-answer { margin: 0.7em 0 0.3em 0; font-size: 1.05em; }
+        .rune-meaning { color: #444; font-size: 0.98em; margin-bottom: 1.2em; }
+    </style>
+</head>
+<body>
+    <div style="max-width:400px;margin:2rem auto 0 auto;text-align:center;font-size:0.97em;">
+        <a href="index.html" style="color:#222;text-decoration:underline;opacity:0.7;">กลับหน้าหลักการทำนายรูน</a>
+    </div>
+    <div class="minimal-rune">
+        <form id="runeForm">
+            <label for="question">ถามคำถามที่ต้องการคำตอบแบบใช่/ไม่ใช่</label>
+            <input type="text" id="question" placeholder="พิมพ์คำถามของคุณ เช่น ฉันโสดไหม?" required>
+            <button type="submit">ทำนาย</button>
+        </form>
+        <div id="runeResult" class="rune-result" style="display:none;">
+            <div class="rune-symbol" id="runeSymbol"></div>
+            <div class="rune-name" id="runeName"></div>
+            <div class="rune-orientation" id="runeOrientation"></div>
+            <div class="rune-answer" id="runeAnswer"></div>
+            <div class="rune-meaning" id="runeMeaning"></div>
+            <button id="castAgain">ทำนายใหม่</button>
+        </div>
+    </div>
+    <script>
+    // Minimal rune data for demo (can expand)
+    const runes = [
+        {
+            symbol: 'ᚷ', name: 'Gebo',
+            meanings: {
+                normal: { answer: 'อาจจะใช่หรือไม่ใช่', advice: 'หากคุณคาดหวังจะได้รับโดยไม่คิดจะให้กลับ คุณจะไม่ประสบความสำเร็จ.' },
+                reversed: { answer: 'ไม่', advice: 'ความสัมพันธ์ไม่สมดุล ต้องเรียนรู้การให้และรับ.' },
+                indeterminate: { answer: 'อาจจะ', advice: 'ความสัมพันธ์ต้องการความสมดุลและการแลกเปลี่ยน.' }
+            }
+        },
+        // เพิ่มรูนอื่นๆ ได้ที่นี่
+    ];
+    function randomOrientation() {
+        const arr = ['normal', 'reversed', 'indeterminate'];
+        return arr[Math.floor(Math.random() * arr.length)];
+    }
+    document.getElementById('runeForm').onsubmit = function(e) {
+        e.preventDefault();
+        // สุ่มรูนและสถานะ (ตัวอย่างใช้ Gebo)
+        const rune = runes[0];
+        const orientation = randomOrientation();
+        document.getElementById('runeSymbol').textContent = rune.symbol;
+        document.getElementById('runeName').textContent = rune.name;
+        document.getElementById('runeOrientation').textContent = orientation === 'normal' ? 'ปกติ' : (orientation === 'reversed' ? 'กลับด้าน' : 'ไม่แน่ชัด');
+        document.getElementById('runeAnswer').textContent = 'คำตอบ: ' + rune.meanings[orientation].answer;
+        document.getElementById('runeMeaning').textContent = rune.meanings[orientation].advice;
+        document.getElementById('runeResult').style.display = 'block';
+        document.getElementById('runeForm').style.display = 'none';
+    };
+    document.getElementById('castAgain').onclick = function() {
+        document.getElementById('runeResult').style.display = 'none';
+        document.getElementById('runeForm').style.display = 'block';
+        document.getElementById('question').value = '';
+    };
+    </script>
+</body>
+</html> 

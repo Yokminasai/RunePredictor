@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎴 เลือกไพ่รูนด้วยตัวเอง - Manual Rune Selection</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="เลือกไพ่รูนด้วยตัวเอง เชื่อมต่อกับจิตใต้สำนึกผ่านการเลือกไพ่รูนด้วยตัวเอง">
+    <meta name="keywords" content="manual rune, เลือกไพ่รูน, manual selection, จิตใต้สำนึก">
+</head>
+<body>
+    <!-- Professional Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🎴</span>
+                    <span>Manual Rune Selection</span>
+                </a>
+                <div class="header-actions">
+                    <a href="index.html" class="btn btn-secondary">
+                        🔮 กลับสู่หน้าอัตโนมัติ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="fade-in">
+            <h1 class="title title-xl">🎴 เลือกไพ่รูนด้วยตัวเอง</h1>
+            <p class="subtitle">เชื่อมต่อกับจิตใต้สำนึกผ่านการเลือกไพ่รูนด้วยตัวเอง</p>
+        </section>
+
+        <!-- Spread Selection -->
+        <section class="card fade-in">
+            <h2 class="title title-md text-center mb-4">เลือกการจัดเรียงรูน</h2>
+            <div class="grid grid-cols-5 gap-3 mb-4">
+                <button class="btn btn-secondary spread-btn" data-spread="one">
+                    <div>🔮</div>
+                    <div>One Rune</div>
+                </button>
+                <button class="btn btn-secondary spread-btn active" data-spread="three">
+                    <div>🌟</div>
+                    <div>Three Rune</div>
+                </button>
+                <button class="btn btn-secondary spread-btn" data-spread="five">
+                    <div>⭐</div>
+                    <div>Five Rune</div>
+                </button>
+                <button class="btn btn-secondary spread-btn" data-spread="cross">
+                    <div>✝️</div>
+                    <div>Cross Rune</div>
+                </button>
+                <button class="btn btn-secondary spread-btn" data-spread="wheel">
+                    <div>🔄</div>
+                    <div>Wheel Rune</div>
+                </button>
+            </div>
+            <div class="spread-description" id="spread-description">
+                <p><strong>รูนที่ 1:</strong> สถานการณ์ปัจจุบัน</p>
+                <p><strong>รูนที่ 2:</strong> ความท้าทาย</p>
+                <p><strong>รูนที่ 3:</strong> คำแนะนำ</p>
+            </div>
+        </section>
+
+        <!-- Manual Controls -->
+        <section class="card fade-in">
+            <h2 class="title title-md text-center mb-4">🎯 การควบคุม</h2>
+            <div class="form-group text-center">
+                <label for="manual-count" class="form-label">จำนวนไพ่ที่ต้องการเลือก</label>
+                <select id="manual-count" class="form-select">
+                    <option value="1">1</option>
+                    <option value="3" selected>3</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-secondary" id="manual-reset">
+                    🔄 เริ่มใหม่
+                </button>
+                <button class="btn btn-primary" id="manual-flip" disabled>
+                    🔮 พลิกดูไพ่
+                </button>
+            </div>
+        </section>
+
+        <!-- Rune Board -->
+        <section class="card fade-in">
+            <h2 class="title title-md text-center mb-4">🎴 กระดานไพ่รูน</h2>
+            <div class="text-center mb-4">
+                <p style="color: rgba(255, 255, 255, 0.8);">คลิกเลือกไพ่ตามจำนวนที่ต้องการ</p>
+            </div>
+            <div id="manualRuneBoard" class="grid grid-cols-6 gap-3 justify-items-center">
+                <!-- Rune cards will be generated here -->
+            </div>
+        </section>
+
+        <!-- Selected Runes -->
+        <section class="card fade-in" id="selectedSection" style="display: none;">
+            <h2 class="title title-md text-center mb-4">✅ ไพ่ที่เลือก</h2>
+            <div id="manualSelectedList" class="grid grid-cols-3 gap-4">
+                <!-- Selected runes will be displayed here -->
+            </div>
+        </section>
+
+        <!-- Interpretation -->
+        <section class="card fade-in" id="interpretationSection" style="display: none;">
+            <h2 class="title title-md text-center mb-4">📖 การตีความ</h2>
+            <div id="manual-interpretation">
+                <!-- Interpretation will be displayed here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Professional Footer -->
+    <footer class="text-center mt-8 mb-4">
+        <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.875rem;">
+            🎴 Manual Rune Selection - เชื่อมต่อกับจิตใต้สำนึกผ่านการเลือกไพ่รูนด้วยตัวเอง
+        </p>
+    </footer>
+
+    <script src="manual.js"></script>
+</body>
+</html> 

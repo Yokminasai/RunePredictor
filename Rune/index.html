@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔮 Rune Divination - การทำนายด้วยอักษรรูนโบราณ</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="การทำนายด้วยอักษรรูนโบราณที่ลึกซึ้งและแม่นยำ พร้อมการวิเคราะห์ธาตุ พลัง และคำแนะนำที่ครบถ้วน">
+    <meta name="keywords" content="rune, divination, การทำนาย, อักษรรูน, ไพ่รูน, วิญญาณ, การวิเคราะห์">
+</head>
+<body>
+    <div style="max-width:400px;margin:2rem auto 0 auto;text-align:center;font-size:0.97em;">
+        <a href="index-yesno.html" style="color:#222;text-decoration:underline;opacity:0.7;">ไปหน้าทำนายแบบใช่/ไม่ใช่ (Yes/No)</a>
+    </div>
+    <!-- Professional Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <span class="logo-icon">🔮</span>
+                    <span>Rune Divination</span>
+                </a>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" id="historyBtn">
+                        📚 ประวัติการทำนาย
+                    </button>
+                    <a href="manual.html" class="btn btn-secondary">
+                        🎴 เลือกไพ่เอง
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="fade-in">
+            <h1 class="title title-xl">🔮 การทำนายด้วยอักษรรูนโบราณ</h1>
+            <p class="subtitle">เชื่อมต่อกับจิตวิญญาณผ่านพลังแห่งอักษรรูนโบราณ รับคำแนะนำที่ลึกซึ้งและแม่นยำ</p>
+        </section>
+
+        <!-- Spread Selection -->
+        <section class="card fade-in">
+            <h2 class="title title-md text-center mb-4">เลือกการจัดเรียงรูน</h2>
+            <div class="grid grid-cols-5 gap-3 mb-4">
+                <button class="btn btn-secondary spread-btn active" data-spread="one">
+                    <div>🔮</div>
+                    <div>One Rune</div>
+                </button>
+                <button class="btn btn-secondary spread-btn" data-spread="three">
+                    <div>🌟</div>
+                    <div>Three Rune</div>
+                </button>
+                <button class="btn btn-secondary spread-btn" data-spread="five">
+                    <div>⭐</div>
+                    <div>Five Rune</div>
+                </button>
+                <button class="btn btn-secondary spread-btn" data-spread="cross">
+                    <div>✝️</div>
+                    <div>Cross Rune</div>
+                </button>
+                <button class="btn btn-secondary spread-btn" data-spread="wheel">
+                    <div>🔄</div>
+                    <div>Wheel Rune</div>
+                </button>
+            </div>
+            <div class="spread-description" id="spreadDescription">
+                <p><strong>รูนที่ 1:</strong> คำตอบหลัก - สิ่งที่คุณต้องรู้และเข้าใจ</p>
+            </div>
+        </section>
+
+        <!-- Question Section -->
+        <section class="card fade-in">
+            <h2 class="title title-md mb-4">💭 คำถามของคุณ</h2>
+            <div class="form-group">
+                <label for="question" class="form-label">ระบุคำถามหรือปัญหาที่ต้องการคำแนะนำ</label>
+                <textarea 
+                    id="question" 
+                    class="form-textarea" 
+                    rows="4" 
+                    placeholder="เช่น: ฉันควรจะเปลี่ยนงานหรือไม่? ความสัมพันธ์ของฉันจะเป็นอย่างไร? อนาคตของธุรกิจจะเป็นอย่างไร?"
+                ></textarea>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-success mb-3" id="randomQuestionBtn">
+                    🎲 คำถามสุ่ม
+                </button>
+                <button class="btn btn-primary" id="castRunesBtn">
+                    🔮 โยนไพ่รูน
+                </button>
+            </div>
+        </section>
+
+        <!-- Rune Display -->
+        <section id="runeDisplay" class="card" style="display: none;">
+            <h2 class="title title-md text-center mb-4">🎴 ผลการทำนาย</h2>
+            <div class="spread-info mb-4">
+                <h3 class="title title-sm text-center mb-3" id="spreadTitle">One Rune Spread - คำตอบแห่งจิตวิญญาณ</h3>
+                <div id="spreadInfo" class="text-center">
+                    <p><strong>รูนที่ 1:</strong> คำตอบหลัก - สิ่งที่คุณต้องรู้และเข้าใจ</p>
+                </div>
+            </div>
+            <!-- Runes will be displayed here by JavaScript -->
+        </section>
+
+        <!-- Interpretation -->
+        <section id="interpretation" class="card" style="display: none;">
+            <h2 class="title title-md text-center mb-4">📖 การตีความ</h2>
+            <div id="interpretationContent">
+                <!-- Interpretation content will be displayed here -->
+            </div>
+        </section>
+
+        <!-- Action Buttons -->
+        <section class="text-center mt-6" id="actionButtons" style="display: none;">
+            <div class="grid grid-cols-3 gap-3">
+                <button class="btn btn-secondary" id="shareBtn">
+                    📤 แชร์ผลลัพธ์
+                </button>
+                <button class="btn btn-secondary" id="saveBtn">
+                    💾 บันทึกผลลัพธ์
+                </button>
+                <button class="btn btn-warning" id="newReadingBtn">
+                    🔄 ทำนายใหม่
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- History Modal -->
+    <div id="historyModal" class="modal">
+        <div class="modal-content card">
+            <div class="modal-header">
+                <h3 class="title title-md">📚 ประวัติการทำนาย</h3>
+                <span class="close" id="closeModal">&times;</span>
+            </div>
+            <div id="historyContent">
+                <!-- History content will be displayed here -->
+            </div>
+            <div class="text-center mt-4">
+                <button class="btn btn-secondary" id="exportHistoryBtn">
+                    📄 ส่งออกประวัติ
+                </button>
+                <button class="btn btn-warning" id="clearHistoryBtn">
+                    🗑️ ล้างประวัติ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Professional Footer -->
+    <footer class="text-center mt-8 mb-4">
+        <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.875rem;">
+            🔮 Rune Divination - เชื่อมต่อกับจิตวิญญาณผ่านพลังแห่งอักษรรูนโบราณ
+        </p>
+    </footer>
+
+    <!-- Modal container for rune detail (เติมเนื้อหาด้วย JS) -->
+    <div id="runeDetailModalRoot"></div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
